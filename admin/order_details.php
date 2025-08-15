@@ -43,6 +43,7 @@ $conn->close();
     .btn-secondary { background-color: #6c757d; }
     .btn-info { background-color: #17a2b8; }
     .btn-copy { font-size: 0.8rem; padding: 0.2rem 0.5rem; margin-left: 10px; }
+    .btn i { margin-right: 5px; }
 
     .details-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
     .panel { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
@@ -56,30 +57,30 @@ $conn->close();
 </style>
 
 <div class="page-title">
-    <h1>Order Details for #<?php echo htmlspecialchars($order['order_id']); ?></h1>
-    <a href="orders.php" class="btn btn-secondary">Back to Orders List</a>
+    <h1><i class="fa-solid fa-file-invoice"></i> Order Details for #<?php echo htmlspecialchars($order['order_id']); ?></h1>
+    <a href="orders.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Orders List</a>
 </div>
 
 <div class="details-grid">
     <div class="panel">
-        <h3>Customer & Order Information</h3>
-        <div class="detail-item"><strong>Owner Name:</strong> <span id="owner_name"><?php echo htmlspecialchars($order['owner_name']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('owner_name')">Copy</button></div>
-        <div class="detail-item"><strong>Business Name:</strong> <span id="business_name"><?php echo htmlspecialchars($order['business_name']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('business_name')">Copy</button></div>
-        <div class="detail-item"><strong>Address:</strong> <span id="address"><?php echo htmlspecialchars($order['address']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('address')">Copy</button></div>
-        <div class="detail-item"><strong>Mobile Number:</strong> <span id="mobile"><?php echo htmlspecialchars($order['mobile']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('mobile')">Copy</button></div>
+        <h3><i class="fa-solid fa-user-tie"></i> Customer & Order Information</h3>
+        <div class="detail-item"><strong>Owner Name:</strong> <span id="owner_name"><?php echo htmlspecialchars($order['owner_name']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('owner_name')"><i class="fa-solid fa-copy"></i></button></div>
+        <div class="detail-item"><strong>Business Name:</strong> <span id="business_name"><?php echo htmlspecialchars($order['business_name']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('business_name')"><i class="fa-solid fa-copy"></i></button></div>
+        <div class="detail-item"><strong>Address:</strong> <span id="address"><?php echo htmlspecialchars($order['address']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('address')"><i class="fa-solid fa-copy"></i></button></div>
+        <div class="detail-item"><strong>Mobile Number:</strong> <span id="mobile"><?php echo htmlspecialchars($order['mobile']); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('mobile')"><i class="fa-solid fa-copy"></i></button></div>
         <hr>
         <div class="detail-item"><strong>User:</strong> <span><?php echo htmlspecialchars($order['user_name']); ?> (<?php echo htmlspecialchars($order['user_email']); ?>)</span></div>
         <div class="detail-item"><strong>Template:</strong> <span><?php echo htmlspecialchars($order['template_name']); ?></span></div>
         <div class="detail-item"><strong>Order Date:</strong> <span><?php echo htmlspecialchars(date('M d, Y h:i A', strtotime($order['order_date']))); ?></span></div>
         <hr>
-        <h3>Payment Information</h3>
+        <h3><i class="fa-solid fa-credit-card"></i> Payment Information</h3>
         <div class="detail-item"><strong>Payment Status:</strong> <span><?php echo htmlspecialchars($order['payment_status'] ?? 'N/A'); ?></span></div>
-        <div class="detail-item"><strong>UTR Number:</strong> <span id="utr_number"><?php echo htmlspecialchars($order['utr_number'] ?? 'N/A'); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('utr_number')">Copy</button></div>
-        <div class="detail-item"><strong>Screenshot:</strong> <span><?php echo $order['screenshot_path'] ? "<a href='../uploads/" . htmlspecialchars($order['screenshot_path']) . "' target='_blank' class='screenshot-link'>View Screenshot</a>" : "N/A"; ?></span></div>
+        <div class="detail-item"><strong>UTR Number:</strong> <span id="utr_number"><?php echo htmlspecialchars($order['utr_number'] ?? 'N/A'); ?></span><button class="btn btn-secondary btn-copy" onclick="copyToClipboard('utr_number')"><i class="fa-solid fa-copy"></i></button></div>
+        <div class="detail-item"><strong>Screenshot:</strong> <span><?php echo $order['screenshot_path'] ? "<a href='../uploads/" . htmlspecialchars($order['screenshot_path']) . "' target='_blank' class='screenshot-link'><i class='fa-solid fa-image'></i> View Screenshot</a>" : "N/A"; ?></span></div>
     </div>
 
     <div class="panel">
-        <h3>Actions</h3>
+        <h3><i class="fa-solid fa-cogs"></i> Actions</h3>
         <div class="form-group">
             <form action="update_order_status.php" method="POST">
                 <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
@@ -90,7 +91,7 @@ $conn->close();
                     <option value="Order Completed" <?php echo ($order['status'] == 'Order Completed') ? 'selected' : ''; ?> disabled>Order Completed (via upload)</option>
                     <option value="Cancelled" <?php echo ($order['status'] == 'Cancelled') ? 'selected' : ''; ?>>Cancelled</option>
                 </select>
-                <button type="submit" class="btn btn-info" style="margin-top: 10px; width: 100%;">Update Status</button>
+                <button type="submit" class="btn btn-info" style="margin-top: 10px; width: 100%;"><i class="fa-solid fa-save"></i> Update Status</button>
             </form>
         </div>
         <hr>
@@ -100,13 +101,13 @@ $conn->close();
                     <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
                     <label for="final_card">Upload Completed Card</label>
                     <input type="file" name="final_card" id="final_card" required>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 10px; width: 100%;">Upload & Mark as Completed</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px; width: 100%;"><i class="fa-solid fa-upload"></i> Upload & Mark as Completed</button>
                 </form>
             </div>
         <?php else: ?>
             <p>You can upload the final card once the order status is 'Order Submitted'.</p>
             <?php if (!empty($order['final_card_path'])): ?>
-                <a href="../uploads/completed_cards/<?php echo htmlspecialchars($order['final_card_path']); ?>" target="_blank" class="btn btn-primary">View Final Card</a>
+                <a href="../uploads/completed_cards/<?php echo htmlspecialchars($order['final_card_path']); ?>" target="_blank" class="btn btn-primary"><i class="fa-solid fa-download"></i> View Final Card</a>
             <?php endif; ?>
         <?php endif; ?>
     </div>

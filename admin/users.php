@@ -26,14 +26,24 @@ require_once '../includes/config.php'; // Path is relative to users.php
     .btn-secondary {
         background-color: #6c757d;
     }
+    .btn i {
+        margin-right: 5px;
+    }
     .search-bar {
         margin-bottom: 1.5rem;
+        display: flex;
     }
     .search-bar input {
         padding: 0.5rem;
         width: 300px;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-right: none;
+    }
+    .search-bar button {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
     table {
         width: 100%;
@@ -56,14 +66,14 @@ require_once '../includes/config.php'; // Path is relative to users.php
 </style>
 
 <div class="page-title">
-    <h1>User Management</h1>
-    <a href="add_user.php" class="btn btn-primary">Add New User</a>
+    <h1><i class="fa-solid fa-users"></i> User Management</h1>
+    <a href="add_user.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add New User</a>
 </div>
 
 <div class="search-bar">
-    <form action="users.php" method="GET">
+    <form action="users.php" method="GET" style="display: flex;">
         <input type="text" name="search" placeholder="Search by name or email..." value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
-        <button type="submit" class="btn btn-secondary">Search</button>
+        <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-search"></i> Search</button>
     </form>
 </div>
 
@@ -111,8 +121,8 @@ require_once '../includes/config.php'; // Path is relative to users.php
                         echo "<td class='password-col'>" . htmlspecialchars($row["password"]) . "</td>"; // SECURITY RISK
                         echo "<td>" . htmlspecialchars($row["last_login"] ?? 'Never') . "</td>";
                         echo "<td>";
-                        echo "<a href='edit_user.php?id=" . $row["id"] . "' class='btn btn-secondary' style='margin-right: 5px;'>Edit</a>";
-                        echo "<a href='delete_user.php?id=" . $row["id"] . "' class='btn btn-danger'>Delete</a>";
+                        echo "<a href='edit_user.php?id=" . $row["id"] . "' class='btn btn-secondary' style='margin-right: 5px;'><i class='fa-solid fa-pencil-alt'></i> Edit</a>";
+                        echo "<a href='delete_user.php?id=" . $row["id"] . "' class='btn btn-danger'><i class='fa-solid fa-trash'></i> Delete</a>";
                         echo "</td>";
                         echo "</tr>";
                     }

@@ -14,6 +14,8 @@ if(!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardo Admin Panel</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --sidebar-width: 250px;
@@ -52,13 +54,18 @@ if(!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true){
             margin: 0;
         }
         .sidebar ul li a {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             padding: 0.8rem 1rem;
             color: var(--sidebar-text-color);
             text-decoration: none;
             border-radius: 4px;
             margin-bottom: 0.5rem;
             transition: background-color 0.3s;
+        }
+        .sidebar ul li a .fa-fw {
+            width: 1.25em;
         }
         .sidebar ul li a:hover, .sidebar ul li a.active {
             background-color: var(--sidebar-link-hover-color);
@@ -81,14 +88,14 @@ if(!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true){
         <nav class="sidebar">
             <h2>Cardo Admin</h2>
             <ul>
-                <li><a href="index.php">Dashboard</a></li>
-                <li><a href="users.php">Users</a></li>
-                <li><a href="banners.php">Banners</a></li>
-                <li><a href="templates.php">Templates</a></li>
-                <li><a href="orders.php">Orders</a></li>
-                <li><a href="payments.php">Payments</a></li>
-                <li><a href="queries.php">Queries</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="index.php"><i class="fa-solid fa-fw fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="users.php"><i class="fa-solid fa-fw fa-users"></i> Users</a></li>
+                <li><a href="banners.php"><i class="fa-solid fa-fw fa-image"></i> Banners</a></li>
+                <li><a href="templates.php"><i class="fa-solid fa-fw fa-palette"></i> Templates</a></li>
+                <li><a href="orders.php"><i class="fa-solid fa-fw fa-box-open"></i> Orders</a></li>
+                <li><a href="payments.php"><i class="fa-solid fa-fw fa-credit-card"></i> Payments</a></li>
+                <li><a href="queries.php"><i class="fa-solid fa-fw fa-circle-question"></i> Queries</a></li>
+                <li><a href="logout.php"><i class="fa-solid fa-fw fa-right-from-bracket"></i> Logout</a></li>
             </ul>
         </nav>
         <main class="main-content">

@@ -77,12 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <div class="page-title">
-    <h1>Banner Management</h1>
+    <h1><i class="fa-solid fa-image"></i> Banner Management</h1>
 </div>
 
 <!-- Add Banner Form -->
 <div class="form-wrapper">
-    <h2>Add New Banner</h2>
+    <h2><i class="fa-solid fa-plus"></i> Add New Banner</h2>
     <?php if (!empty($upload_message)) echo "<div class='alert alert-success'>{$upload_message}</div>"; ?>
     <?php if (!empty($upload_error)) echo "<div class='alert alert-danger'>{$upload_error}</div>"; ?>
     <form action="banners.php" method="post" enctype="multipart/form-data">
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="banner_text" id="banner_text" placeholder="e.g., Special Offer!">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Add Banner">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-upload"></i> Add Banner</button>
         </div>
     </form>
 </div>
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<h4>Banner #' . htmlspecialchars($row['id']) . '</h4>';
             echo '<p>' . htmlspecialchars($row['text'] ?: 'No text provided') . '</p>';
             echo '</div>';
-            echo '<a href="delete_banner.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-danger">Delete</a>';
+            echo '<a href="delete_banner.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>';
             echo '</div>';
         }
     } else {

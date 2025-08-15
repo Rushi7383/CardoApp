@@ -62,8 +62,8 @@ if (isset($_GET['error'])) {
 </style>
 
 <div class="page-title">
-    <h1>Template Management</h1>
-    <a href="add_template.php" class="btn btn-primary">Add New Template</a>
+    <h1><i class="fa-solid fa-palette"></i> Template Management</h1>
+    <a href="add_template.php" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add New Template</a>
 </div>
 
 <?php if (!empty($feedback_message)) echo "<div class='alert alert-success'>{$feedback_message}</div>"; ?>
@@ -79,7 +79,7 @@ if (isset($_GET['error'])) {
                     <label for="category_name">New Category Name</label>
                     <input type="text" name="category_name" id="category_name" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Add Category</button>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Category</button>
             </form>
         </div>
         <hr>
@@ -91,7 +91,7 @@ if (isset($_GET['error'])) {
             if ($cat_result && $cat_result->num_rows > 0) {
                 while($cat_row = $cat_result->fetch_assoc()) {
                     echo "<li>" . htmlspecialchars($cat_row['name']) .
-                         " <a href='delete_category.php?id=" . $cat_row['id'] . "' class='btn btn-danger'>Delete</a></li>";
+                         " <a href='delete_category.php?id=" . $cat_row['id'] . "' class='btn btn-danger'><i class='fa-solid fa-trash'></i></a></li>";
                 }
             } else {
                 echo "<li>No categories found.</li>";
@@ -131,8 +131,8 @@ if (isset($_GET['error'])) {
                     echo "<div class='info'>";
                     echo "<h5>" . htmlspecialchars($template['name']) . "</h5>";
                     echo "<div class='actions'>";
-                    echo "<a href='edit_template.php?id=" . $template['id'] . "' class='btn btn-secondary'>Edit</a>";
-                    echo "<a href='delete_template.php?id=" . $template['id'] . "' class='btn btn-danger'>Delete</a>";
+                    echo "<a href='edit_template.php?id=" . $template['id'] . "' class='btn btn-secondary'><i class='fa-solid fa-pencil-alt'></i> Edit</a>";
+                    echo "<a href='delete_template.php?id=" . $template['id'] . "' class='btn btn-danger'><i class='fa-solid fa-trash'></i> Delete</a>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
